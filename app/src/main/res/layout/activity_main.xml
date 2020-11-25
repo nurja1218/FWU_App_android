@@ -176,6 +176,8 @@
 
         >
         <com.karacce.buttom.Buttom
+            android:id="@+id/server"
+
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_marginTop="5dp"
@@ -205,6 +207,7 @@
 
         >
         <com.karacce.buttom.Buttom
+            android:id="@+id/local"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_marginTop="5dp"

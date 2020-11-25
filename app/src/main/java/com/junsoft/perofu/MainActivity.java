@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     VideoView mVideoView;
 
     Buttom scanBt;
+    Buttom serverBt;
+    Buttom localBt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
          mVideoView = (VideoView) findViewById(R.id.screenVideoView);
 
         scanBt = (Buttom) findViewById(R.id.scanClick);
+        serverBt = (Buttom) findViewById(R.id.server);
+        localBt = (Buttom) findViewById(R.id.local);
 
 
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/demo");
@@ -69,13 +74,43 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                goSnaList();
+                goScanList();
+            }
+        });
+        serverBt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                goServerList();
+            }
+        });
+        localBt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                goLocalList();
             }
         });
     }
-    void goSnaList()
+    void goScanList()
     {
         Intent intent = new Intent(this, ScanActivity.class);
+        startActivity(intent);
+        Bungee.fade(this);
+
+    }
+    void goServerList()
+    {
+        Intent intent = new Intent(this, ServerFirmwareActivity.class);
+        startActivity(intent);
+        Bungee.fade(this);
+
+    }
+    void goLocalList()
+    {
+        Intent intent = new Intent(this, LocalFirmwareActivity.class);
         startActivity(intent);
         Bungee.fade(this);
 

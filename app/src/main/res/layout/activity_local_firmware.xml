@@ -12,21 +12,21 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-         android:background="@drawable/round_white"
+        android:background="@drawable/round_white"
         >
 
-    <TextView
-        android:id="@+id/subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select your PERPO"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:textSize="14dp"
-        android:fontFamily="sans-serif-bold"
-        android:textStyle="bold"
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select firmware"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif-bold"
+            android:textStyle="bold"
 
-        android:textColor="#000" />
+            android:textColor="#000" />
 
         <ListView
             android:id="@+id/listview1"
