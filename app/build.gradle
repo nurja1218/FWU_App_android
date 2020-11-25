@@ -27,13 +27,10 @@ dependencies {
     implementation 'com.github.karacce:Buttom:v1.0'
     implementation 'com.github.Binary-Finery:Bungee:master'
     implementation 'com.github.jakob-grabner:Circle-Progress-View:1.4'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.3'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.3'
-    implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.3'
     implementation 'no.nordicsemi.android:ble:2.2.4'
     implementation 'no.nordicsemi.android:log:2.2.0'
     implementation 'no.nordicsemi.android.support.v18:scanner:1.4.3'
-
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation 'no.nordicsemi.android:dfu:1.10.3'
     // if you desire to build the DFU Library, clone the
     // https://github.com/NordicSemiconductor/Android-DFU-Library project into DFULibrary folder,
