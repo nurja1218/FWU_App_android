@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PeroFU</string>
+    <string name="scanner_empty">No device found</string>
+    <string name="not_available">n/a</string>
+    <string name="scanner_subtitle_not_bonded">AVAILABLE DEVICES:</string>
+    <string name="scanner_subtitle_bonded">BONDED DEVICES:</string>
+
 </resources>

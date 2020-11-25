@@ -7,5 +7,92 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="SplashTheme" parent="android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/logo</item>
+    </style>
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="RedAccent" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">#f3bc51</item>
+    </style>
+
+    <style name="ProAccent" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">#ffffff</item>
+    </style>
+
+    <style name="AppTheme.Widget"/>
+
+    <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:fontFamily">@fonts/neoteric</item>
+
+    </style>
+    <style name="AppTheme.ActionButton" parent="Widget.AppCompat.ActionButton">
+        <!-- Your custom styles here MyTheme.DayNight-->
+    </style>
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#fc4d65</item>
+        <item name="android:navigationBarColor">#ffffff</item>
+        <item name="actionBarTheme">@style/AppBaseTheme.Toolbar</item>
+    </style>
+
+    <!--Action bar-->
+    <style name="AppBaseTheme.Toolbar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="android:textColorPrimary">#000000</item>
+        <item name="colorControlNormal">#000000</item>
+        <item name="android:titleTextStyle">@style/AppBaseTheme.Toolbar.TitleTextStyle</item>
+    </style>
+    <style name="AppBaseTheme.Toolbar.TitleTextStyle" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="android:textSize">12dp</item>
+    </style>
+    <style name="MyTitle" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">#ffffff</item>
+        <item name="android:textColorPrimary">#000000</item>
+        <item name="android:textColorPrimaryInverse">#000000</item>
+
+    </style>
+    <style name="BlueTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/cornflower_blue</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">@color/cornflower_blue</item>
+    </style>
+
+
+    <style name="Theme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+      <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimAmount">0.0</item>
+       <item name="android:windowFullscreen">true</item>
+        <item name="android:windowActionBar">false</item>
+
+    </style>
+
+    <style name="Theme.AppCompat.Transparent.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.1</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:background">@android:color/transparent</item>
+
+    </style>
+
 
 </resources>

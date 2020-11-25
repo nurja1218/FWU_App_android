@@ -1,18 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:background="#ffffff"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        >
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="64dp"
+            android:src="@drawable/top_logo"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/first"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_below="@+id/top"
+        android:background="#ffffff"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="1.Changing mode PERO"
+            android:textSize="17dp"
+            android:fontFamily="sans-serif-bold"
+            android:textStyle="bold"
+             />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/movie"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_below="@+id/first"
+        android:background="#ffffff"
+        >
+        <VideoView
+            android:id="@+id/screenVideoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </VideoView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/movie"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="2.Connect PERO"
+            android:textSize="17dp"
+            android:fontFamily="sans-serif-bold"
+            android:textStyle="bold"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/scan_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan"
+
+        >
+        <com.karacce.buttom.Buttom
+            android:id="@+id/scanClick"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:text="       Scanning PERO"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            app:buttom_type="gradient"
+            app:buttom_gradient_type="linear"
+            app:buttom_gradient_orientation="left_right"
+            app:buttom_gradient_start_color="#e8963d"
+            app:buttom_gradient_end_color="#c1315a"
+            app:buttom_corner_radius="22dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/device_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan_bt"
+        android:background="#ffffff"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:text="Device info"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/device_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/device_label"
+        android:background="#ffffff"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="5dp"
+            android:text="Device"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/select_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/device_name"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="3.Select Package"
+            android:textSize="17dp"
+            android:fontFamily="sans-serif-bold"
+            android:textStyle="bold"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/server_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/select_label"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+
+        >
+        <com.karacce.buttom.Buttom
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:text="       From palmcat's Update Server"
+            android:textAlignment="textStart"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            app:buttom_type="gradient"
+            app:buttom_gradient_type="linear"
+            app:buttom_gradient_orientation="left_right"
+            app:buttom_gradient_start_color="#e8963d"
+            app:buttom_gradient_end_color="#c1315a"
+            app:buttom_corner_radius="22dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/local_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/server_bt"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+
+        >
+        <com.karacce.buttom.Buttom
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:text="       From Local Directory"
+            android:textAlignment="textStart"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            app:buttom_type="gradient"
+            app:buttom_gradient_type="linear"
+            app:buttom_gradient_orientation="left_right"
+            app:buttom_gradient_start_color="#e8963d"
+            app:buttom_gradient_end_color="#c1315a"
+            app:buttom_corner_radius="22dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
