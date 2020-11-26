@@ -3,7 +3,13 @@
     <!-- Material Design - Color Palette
         <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+
+     let colors = [UIColor(hex: "fad336"), UIColor(hex: "ed1c24")]
+
      -->
+    <color name="progressStart">#eab14e</color>
+    <color name="progressEnd">#d83831</color>
+
     <color name="colorPrimaryVariant">#3700b3</color>
     <color name="colorSecondary">#03dac6</color>
     <color name="colorSecondaryVariant">#018786</color>

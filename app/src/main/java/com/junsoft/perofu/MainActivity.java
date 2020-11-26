@@ -1,14 +1,17 @@
 package com.junsoft.perofu;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.VideoView;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -18,13 +21,15 @@ import com.karacce.buttom.Buttom;
 import spencerstudios.com.bungeelib.Bungee;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ScanActivity.OnDeviceSelectedListener {
 
     VideoView mVideoView;
 
     Buttom scanBt;
     Buttom serverBt;
     Buttom localBt;
+    TextView deviceName;
+    private BluetoothDevice selectedDevice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         scanBt = (Buttom) findViewById(R.id.scanClick);
         serverBt = (Buttom) findViewById(R.id.server);
         localBt = (Buttom) findViewById(R.id.local);
+
+        deviceName = (TextView) findViewById(R.id.devicename);
 
 
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/demo");
@@ -94,9 +101,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    /*
+            SharedPreferences mPrefs = getSharedPreferences("FACE_EFFECT", MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+
+        prefsEditor.putFloat("FACE_NARROW_VAL", fNarrowValue );
+
+        prefsEditor.commit();
+     */
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+
+        if(DeviceManager.getInstance().selectedDevice != null)
+        {
+            deviceName.setText(DeviceManager.getInstance().deviceName);
+        }
+     
+    }
+
     void goScanList()
     {
         Intent intent = new Intent(this, ScanActivity.class);
+
+     //   intent.p("PARENT", this);
+
         startActivity(intent);
         Bungee.fade(this);
 
@@ -114,5 +145,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         Bungee.fade(this);
 
+    }
+    @Override
+    public void onDeviceSelected(@NonNull final BluetoothDevice device, final String name) {
+        selectedDevice = device;
+
+        deviceName.setText(name);
+        //   selectedDevice = device;
+     //   uploadButton.setEnabled(statusOk);
+     //   deviceNameView.setText(name != null ? name : getString(R.string.not_available));
     }
 }

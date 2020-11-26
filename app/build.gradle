@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.junsoft.perofu"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -32,6 +37,13 @@ dependencies {
     implementation 'no.nordicsemi.android.support.v18:scanner:1.4.3'
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation 'no.nordicsemi.android:dfu:1.10.3'
+
+    implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+
+
+    implementation 'com.github.Adilhusen:circle-progress-ad-android-:1.0'
+
+    implementation 'com.shimaami.android:progressview:1.0.1'
     // if you desire to build the DFU Library, clone the
     // https://github.com/NordicSemiconductor/Android-DFU-Library project into DFULibrary folder,
     // add it as a module into the project structure and uncomment the following line

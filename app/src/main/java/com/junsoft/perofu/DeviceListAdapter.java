@@ -141,6 +141,7 @@ class DeviceListAdapter extends BaseAdapter {
         final int type = getItemViewType(position);
 
         View view = oldView;
+
         switch (type) {
             case TYPE_EMPTY:
                 if (view == null) {
@@ -159,8 +160,8 @@ class DeviceListAdapter extends BaseAdapter {
                     view = inflater.inflate(R.layout.device_list_row, parent, false);
                     final ViewHolder holder = new ViewHolder();
                     holder.name = view.findViewById(R.id.name);
-                    holder.address = view.findViewById(R.id.address);
-                    holder.rssi = view.findViewById(R.id.rssi);
+             //       holder.address = view.findViewById(R.id.address);
+              //      holder.rssi = view.findViewById(R.id.rssi);
                     view.setTag(holder);
                 }
 
@@ -168,6 +169,7 @@ class DeviceListAdapter extends BaseAdapter {
                 final ViewHolder holder = (ViewHolder) view.getTag();
                 final String name = device.name;
                 holder.name.setText(name != null ? name : parent.getContext().getString(R.string.not_available));
+                /*
                 holder.address.setText(device.device.getAddress());
                 if (!device.isBonded || device.rssi != ExtendedBluetoothDevice.NO_RSSI) {
                     final int rssiPercent = (int) (100.0f * (127.0f + device.rssi) / (127.0f + 20.0f));
@@ -176,6 +178,8 @@ class DeviceListAdapter extends BaseAdapter {
                 } else {
                     holder.rssi.setVisibility(View.GONE);
                 }
+
+                 */
                 break;
         }
 
