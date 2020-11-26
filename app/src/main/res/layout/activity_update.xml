@@ -27,6 +27,7 @@
             />
     </RelativeLayout>
     <ImageView
+        android:id="@+id/back"
         android:layout_width="22dp"
         android:layout_height="64dp"
         android:src="@drawable/back"
@@ -146,14 +147,15 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/status"
+        android:id="@+id/status_label"
         android:layout_below="@+id/devider2"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="24dp">
 
         <TextView
-             android:layout_width="match_parent"
+            android:id="@+id/status"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="waiting"
@@ -166,7 +168,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="277dp"
-        android:layout_below="@+id/status"
+        android:layout_below="@+id/status_label"
         android:layout_marginTop ="10dp"
         android:gravity="center"
         >
@@ -183,7 +185,7 @@
         android:id="@+id/progress_info"
         android:layout_width="match_parent"
         android:layout_height="277dp"
-        android:layout_below="@+id/status"
+        android:layout_below="@+id/status_label"
         android:layout_marginTop ="10dp"
         android:gravity="center_horizontal"
         >
@@ -212,7 +214,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="277dp"
-        android:layout_below="@+id/status"
+        android:layout_below="@+id/status_label"
         android:layout_marginTop ="10dp"
         android:gravity="center"
         >
@@ -240,7 +242,7 @@
         >
 
         <com.karacce.buttom.Buttom
-            android:id="@+id/scanClick"
+            android:id="@+id/update"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="44dp"

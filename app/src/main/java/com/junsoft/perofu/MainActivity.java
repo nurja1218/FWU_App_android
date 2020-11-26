@@ -21,7 +21,7 @@ import com.karacce.buttom.Buttom;
 import spencerstudios.com.bungeelib.Bungee;
 
 
-public class MainActivity extends AppCompatActivity implements ScanActivity.OnDeviceSelectedListener {
+public class MainActivity extends AppCompatActivity  {
 
     VideoView mVideoView;
 
@@ -146,13 +146,5 @@ public class MainActivity extends AppCompatActivity implements ScanActivity.OnDe
         Bungee.fade(this);
 
     }
-    @Override
-    public void onDeviceSelected(@NonNull final BluetoothDevice device, final String name) {
-        selectedDevice = device;
 
-        deviceName.setText(name);
-        //   selectedDevice = device;
-     //   uploadButton.setEnabled(statusOk);
-     //   deviceNameView.setText(name != null ? name : getString(R.string.not_available));
-    }
 }

@@ -8,6 +8,8 @@ public class DeviceManager {
     public String deviceName;
     public BluetoothDevice selectedDevice;
 
+    public String firmwareName;
+
     //static 객체변수 getter선언 (항상 같은 객체를 가져오게된다.)
     public static DeviceManager getInstance(){
         if(_Instance==null){
