@@ -119,11 +119,15 @@ public class UpdateActivity extends Activity {
             GradientDrawable gradient = new GradientDrawable(
                     GradientDrawable.Orientation.LEFT_RIGHT, colors);
             gradient.setGradientType(LINEAR_GRADIENT);
-        
+
           //  gradient.setColor(Color.parseColor("#b3b3b3"));
             gradient.setCornerRadius(convertDpToPixel(22.0f));
 
             updateBt.setBackground(gradient);
+
+            DeviceManager.getInstance().firmwareName = "";
+            DeviceManager.getInstance().fwUri = null;
+
         }
 
         @Override
@@ -242,6 +246,12 @@ public class UpdateActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+     //   public String firmwareName;
+     //   public Uri fwUri;
+        DeviceManager.getInstance().firmwareName = "";
+        DeviceManager.getInstance().fwUri = null;
+
+
         DfuServiceListenerHelper.unregisterProgressListener(this, dfuProgressListener);
     }
     public float convertDpToPixel(float dp){
@@ -312,7 +322,19 @@ public class UpdateActivity extends Activity {
                 Uri uri = Uri.parse(filePath);
                 File file = new File(filePath);
                 String path = file.getPath();
-                starter.setZip( path);
+
+                if( DeviceManager.getInstance().fwUri != null)
+                {
+                    starter.setZip( DeviceManager.getInstance().fwUri);
+                    DeviceManager.getInstance().fwUri = null;
+
+
+                }
+                else
+                {
+                    starter.setZip( path);
+
+                }
                 starter.start(this, DfuService.class);
 
             }
