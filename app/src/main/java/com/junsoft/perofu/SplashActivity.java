@@ -2,13 +2,17 @@ package com.junsoft.perofu;
 
 
 import android.app.Activity;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
@@ -29,6 +33,17 @@ public class SplashActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_splash);
+
+        RelativeLayout imgView = (RelativeLayout)findViewById(R.id.title);
+
+        Display display = getWindowManager().getDefaultDisplay();
+
+
+        Point size = new Point();
+        display.getSize(size);
+
+     //   imgView.getLayoutParams().width = (int)(0.6 *size.x) ;
+        imgView.getLayoutParams().height = (int)(0.5*size.x) ;
 
 
         mTimerDisp = new Handler()

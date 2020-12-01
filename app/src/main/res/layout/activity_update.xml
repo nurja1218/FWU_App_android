@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,7 +15,7 @@
     <RelativeLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:background="#ffffff"
@@ -21,8 +23,9 @@
         >
 
         <ImageView
+            android:id="@+id/top_img"
             android:layout_width="120dp"
-            android:layout_height="64dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/top_logo"
             />
     </RelativeLayout>
@@ -187,6 +190,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/status_label"
         android:gravity="center"
+        android:background="#00ffffff"
         >
 
         <at.grabner.circleprogress.CircleProgressView
@@ -197,8 +201,8 @@
             CircleProgressView:cpv_unit ="%"
             CircleProgressView:cpv_text = ""
             CircleProgressView:cpv_textColor ="#ffffff"
-            CircleProgressView:cpv_textSize="64dp"
-            CircleProgressView:cpv_unitSize="64dp"
+            CircleProgressView:cpv_textSize="0dp"
+            CircleProgressView:cpv_unitSize="0dp"
             CircleProgressView:cpv_showUnit="false"
             CircleProgressView:cpv_rimColor="#00000000"
             CircleProgressView:cpv_outerContourColor="#00000000"
@@ -210,6 +214,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/percent_l"
+        android:background="#0000"
 
         android:layout_width="match_parent"
         android:layout_height="277dp"
@@ -221,6 +226,7 @@
             android:id="@+id/percent_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#0000"
             android:text="0%"
             android:textSize="64dp"
             android:textAlignment="center"

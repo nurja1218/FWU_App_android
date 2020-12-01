@@ -12,6 +12,7 @@ import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -24,6 +25,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -99,10 +101,36 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Display display = getWindowManager().getDefaultDisplay();
 
 
+        RelativeLayout seconT = (RelativeLayout)findViewById(R.id.scan);
+
+        RelativeLayout firmwareT = (RelativeLayout)findViewById(R.id.select_label);
+
         Point size = new Point();
         display.getSize(size);
 
        int height = (int)(size.x * (9.0f / 16.0f));
+
+       int offset = (int)((size.y - (height + convertDpToPixel(64 + 26 + 11)) ) / 3.0f ) ;
+
+      int pxOffset = (int)  convertPixelsToDp(offset);
+       // seconT.getLayoutParams().left;
+
+        if(size.y> 800)
+        {
+            RelativeLayout.LayoutParams param0 = (RelativeLayout.LayoutParams) seconT.getLayoutParams();
+
+            param0.topMargin = pxOffset;//convertDpToPixel(width);
+            seconT.setLayoutParams(param0);
+
+            RelativeLayout.LayoutParams param1 = (RelativeLayout.LayoutParams) firmwareT.getLayoutParams();
+
+            param1.topMargin = (int)convertPixelsToDp(offset);//convertDpToPixel(width);
+
+            firmwareT.setLayoutParams(param1);
+        }
+
+
+
         mVideoView.getLayoutParams().width =  size.x;
 
         mVideoView.getLayoutParams().height=(int)height;
@@ -114,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         DisplayMetrics metrics = resources.getDisplayMetrics();
         float dpi =(float)metrics.densityDpi /  DisplayMetrics.DENSITY_DEFAULT;
 
-        if(dpi <= 1.5)
+        if( size.y > 480 && size.y <= 800)
         {
             scanBt.getLayoutParams().height = (int)convertDpToPixel(34);
 
@@ -131,6 +159,31 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
             deviceL.setTextSize((int)(11));
             deviceName.setTextSize((int)(11));
+
+        }
+        else if( size.y <= 480)
+        {
+            RelativeLayout top = (RelativeLayout)findViewById(R.id.top);
+            top.getLayoutParams().height = 48;
+
+            ImageView top_img = (ImageView)findViewById(R.id.top_img);
+            top_img.getLayoutParams().height = 22;
+
+            scanBt.getLayoutParams().height = (int)convertDpToPixel(30);
+
+            serverBt.getLayoutParams().height = (int)convertDpToPixel(30);
+            localBt.getLayoutParams().height = (int)convertDpToPixel(30);
+
+            scanBt.setTextSize((int)(8));
+            serverBt.setTextSize((int)(8));
+            localBt.setTextSize((int)(8));
+
+            first.setTextSize((int)(10));
+            second.setTextSize((int)(10));
+            third.setTextSize((int)(10));
+
+            deviceL.setTextSize((int)(9));
+            deviceName.setTextSize((int)(9));
 
         }
 
@@ -151,6 +204,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         });
         setBtListner();
     }
+    public float convertPixelsToDp(float px){
+        Resources resources = this.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float dp = px / ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+        return dp;
+    }
+
+
+
+
+
     @Override
     public Loader<Cursor> onCreateLoader(final int id, final Bundle args) {
         final Uri uri = args.getParcelable(EXTRA_URI);
@@ -343,6 +407,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
          */
         final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+       // intent.putExtra("toolbarColor", Color.WHITE);
         intent.setType( DfuService.MIME_TYPE_ZIP );
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         if (intent.resolveActivity(getPackageManager()) != null) {

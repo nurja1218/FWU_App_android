@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
-    android:background="#aa000000"
+    android:background="#00000000"
     >
 
     <RelativeLayout
@@ -21,22 +21,36 @@
         android:layout_height="wrap_content"
         android:text="Select your PERPO"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:textSize="14dp"
         android:fontFamily="sans-serif-bold"
         android:textStyle="bold"
 
         android:textColor="#000" />
 
-        <ListView
-            android:id="@+id/listview1"
-            android:divider="#ffffff"
-            android:layout_marginTop="10dp"
+        <RelativeLayout
+            android:id="@+id/devider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:background="#b2b2b2"
             android:layout_below="@+id/subtitle"
+            >
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/listview1"
+            android:divider="#b2b2b2"
+            android:dividerHeight="1px"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_below="@+id/devider"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+        <!-- android:divider="#ffffff" -->
+
 
     </RelativeLayout>
 

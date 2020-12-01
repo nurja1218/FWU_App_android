@@ -254,7 +254,25 @@ public class UpdateActivity extends Activity {
 
         int dp = (int)(96.0f / dpi);
 
-        if(dpi == 1.5)
+        ImageView back = (ImageView)findViewById(R.id.progress_back);
+        RelativeLayout l = (RelativeLayout)findViewById(R.id.percent_l);
+        RelativeLayout l1 = (RelativeLayout)findViewById(R.id.progress_info);
+
+
+
+        float offset = 64 + 28 +  1 + 100 + 10 + 1 + 44 + 10 + 20 + 24 ;//64 + 58 + 1 + 100 + 10 + 30 + 1 + 44;
+        float height = size.y - convertDpToPixel(offset + 44 * 2);
+        mCircleView.getLayoutParams().height = (int)height;
+        back.getLayoutParams().height = (int)height;
+        l.getLayoutParams().height = (int)height;
+        l1.getLayoutParams().height = (int)height;
+
+        float ratio0 = height / convertDpToPixel(277);
+
+        mCircleView.setBarWidth((int)Math.ceil(24 * dpi * ratio0));
+        mCircleView.setRimWidth((int)Math.ceil(23 * dpi* ratio0));
+
+        if(dpi == 1.5 )
         {
          //   dpi = 0.75f;
             /*
@@ -278,23 +296,46 @@ public class UpdateActivity extends Activity {
             updateBt.setTextSize((int)(10));
 
         }
-        ImageView back = (ImageView)findViewById(R.id.progress_back);
-        RelativeLayout l = (RelativeLayout)findViewById(R.id.percent_l);
-        RelativeLayout l1 = (RelativeLayout)findViewById(R.id.progress_info);
+        else if( size.y<= 480)
+        {
+            RelativeLayout top = (RelativeLayout)findViewById(R.id.top);
+            top.getLayoutParams().height = 48;
+
+            ImageView top_img = (ImageView)findViewById(R.id.top_img);
+            top_img.getLayoutParams().height = 22;
+
+            ImageView back0 = (ImageView)findViewById(R.id.back);
+            back0.getLayoutParams().height = 48;
+            //
+
+            TextView percent = (TextView)findViewById(R.id.percent_label);
+            percent.setTextSize(18);
+
+            updateBt.getLayoutParams().height = (int)convertDpToPixel(34);
+
+            updateBt.setTextSize((int)(10));
+
+            ImageView back2 = (ImageView)findViewById(R.id.progress_back);
+            RelativeLayout l2 = (RelativeLayout)findViewById(R.id.percent_l);
+            RelativeLayout l3 = (RelativeLayout)findViewById(R.id.progress_info);
 
 
 
-        float offset = 64 + 28 +  1 + 100 + 10 + 1 + 44 + 10 + 20 + 24 ;//64 + 58 + 1 + 100 + 10 + 30 + 1 + 44;
-        float height = size.y - convertDpToPixel(offset + 44 * 2);
-        mCircleView.getLayoutParams().height = (int)height;
-        back.getLayoutParams().height = (int)height;
-        l.getLayoutParams().height = (int)height;
-        l1.getLayoutParams().height = (int)height;
+            float offset0 = 48 + 28 +  1 + 100 + 10 + 1 + 44 + 10 + 20 + 24 ;//64 + 58 + 1 + 100 + 10 + 30 + 1 + 44;
+            float height0 = size.y - convertDpToPixel(offset0 + 44 * 2);
+            mCircleView.getLayoutParams().height = (int)height0;
+            back2.getLayoutParams().height = (int)height0;
+            l2.getLayoutParams().height = (int)height0;
+            l3.getLayoutParams().height = (int)height0;
 
-        float ratio0 = height / convertDpToPixel(277);
+            float ratio1 = height0 / convertDpToPixel(277);
 
-        mCircleView.setBarWidth((int)Math.ceil(24 * dpi * ratio0));
-        mCircleView.setRimWidth((int)Math.ceil(23 * dpi* ratio0));
+            mCircleView.setBarWidth((int)Math.ceil(24 * dpi * ratio1));
+            mCircleView.setRimWidth((int)Math.ceil(23 * dpi* ratio1));
+
+        }
+
+
 
         mCircleView.setValue(65);
 

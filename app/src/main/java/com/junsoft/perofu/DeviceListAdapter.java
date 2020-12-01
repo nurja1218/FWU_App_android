@@ -1,6 +1,7 @@
 package com.junsoft.perofu;
 
 import android.bluetooth.BluetoothDevice;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,16 @@ class DeviceListAdapter extends BaseAdapter {
      */
     void addBondedDevices(@NonNull final Set<BluetoothDevice> devices) {
         for (BluetoothDevice device : devices) {
-            listBondedValues.add(new ExtendedBluetoothDevice(device));
+            String name = device.getName();
+            if(device.getName() != null && device.getName().length() > 0)
+            {
+                listBondedValues.add(new ExtendedBluetoothDevice(device));
+
+            }
+            else
+            {
+                Log.d("","");
+            }
         }
         notifyDataSetChanged();
     }
@@ -49,7 +59,12 @@ class DeviceListAdapter extends BaseAdapter {
         for (final ScanResult result : results) {
             final ExtendedBluetoothDevice device = findDevice(result);
             if (device == null) {
-                listValues.add(new ExtendedBluetoothDevice(result));
+                ExtendedBluetoothDevice device0 =  new ExtendedBluetoothDevice(result);
+                if(device0.name != null)
+                {
+                    listValues.add(device0);
+
+                }
             } else {
                 device.name = result.getScanRecord() != null ? result.getScanRecord().getDeviceName() : null;
                 device.rssi = result.getRssi();
@@ -75,15 +90,23 @@ class DeviceListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        /*
         final int bondedCount = listBondedValues.size() + 1; // 1 for the title
         final int availableCount = listValues.isEmpty() ? 2 : listValues.size() + 1; // 1 for title, 1 for empty text
         if (bondedCount == 1)
             return availableCount;
         return bondedCount + availableCount;
+
+         */
+        final int availableCount = listValues.size(); // 1 for title, 1 for empty text
+        return availableCount;
+
+
     }
 
     @Override
     public Object getItem(final int position) {
+        /*
         final int bondedCount = listBondedValues.size() + 1; // 1 for the title
         if (listBondedValues.isEmpty()) {
             if (position == 0)
@@ -99,11 +122,14 @@ class DeviceListAdapter extends BaseAdapter {
                 return R.string.scanner_subtitle_not_bonded;
             return listValues.get(position - bondedCount - 1);
         }
+
+         */
+        return listValues.get(position );
     }
 
     @Override
     public int getViewTypeCount() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -118,6 +144,7 @@ class DeviceListAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(final int position) {
+        /*
         if (position == 0)
             return TYPE_TITLE;
 
@@ -128,6 +155,13 @@ class DeviceListAdapter extends BaseAdapter {
             return TYPE_EMPTY;
 
         return TYPE_ITEM;
+
+         */
+        if (listValues.isEmpty())
+            return TYPE_EMPTY;
+
+        return TYPE_ITEM;
+
     }
 
     @Override
