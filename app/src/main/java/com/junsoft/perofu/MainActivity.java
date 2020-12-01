@@ -10,17 +10,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -80,9 +85,55 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         deviceName = (TextView) findViewById(R.id.devicename);
 
+        RelativeLayout main = (RelativeLayout) findViewById(R.id.movie);
+
+        TextView first = (TextView)findViewById(R.id.firstT);
+        TextView second = (TextView)findViewById(R.id.secondT);
+        TextView third = (TextView)findViewById(R.id.thirdT);
+        TextView deviceL = (TextView)findViewById(R.id.device_l);
+
 
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/demo");
         mVideoView.setVideoURI(uri);
+
+        Display display = getWindowManager().getDefaultDisplay();
+
+
+        Point size = new Point();
+        display.getSize(size);
+
+       int height = (int)(size.x * (9.0f / 16.0f));
+        mVideoView.getLayoutParams().width =  size.x;
+
+        mVideoView.getLayoutParams().height=(int)height;
+
+        main.getLayoutParams().width =  size.x;
+        main.getLayoutParams().height =  height;
+
+        Resources resources = this.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float dpi =(float)metrics.densityDpi /  DisplayMetrics.DENSITY_DEFAULT;
+
+        if(dpi <= 1.5)
+        {
+            scanBt.getLayoutParams().height = (int)convertDpToPixel(34);
+
+            serverBt.getLayoutParams().height = (int)convertDpToPixel(34);
+            localBt.getLayoutParams().height = (int)convertDpToPixel(34);
+
+            scanBt.setTextSize((int)(10));
+            serverBt.setTextSize((int)(10));
+            localBt.setTextSize((int)(10));
+
+            first.setTextSize((int)(12));
+            second.setTextSize((int)(12));
+            third.setTextSize((int)(12));
+
+            deviceL.setTextSize((int)(11));
+            deviceName.setTextSize((int)(11));
+
+        }
+
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -162,6 +213,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
              */
         }
     }
+    public float convertDpToPixel(float dp){
+        Resources resources = this.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px = dp * ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+        return px;
+    }
 
     void showAlert()
     {
@@ -206,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
             @Override
             public void onClick(View v) {
-
+/*
                 if( DeviceManager.getInstance().selectedDevice != null)
                 {
                     goServerList();
@@ -216,6 +273,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 {
                     showAlert();
                 }
+
+ */
+                goServerList();
+
             }
         });
         localBt.setOnClickListener(new View.OnClickListener() {

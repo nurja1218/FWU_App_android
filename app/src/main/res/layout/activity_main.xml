@@ -28,11 +28,12 @@
     <RelativeLayout
         android:id="@+id/first"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
+        android:layout_height="26dp"
         android:layout_below="@+id/top"
         android:background="#ffffff"
         >
         <TextView
+            android:id="@+id/firstT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -69,6 +70,7 @@
 
         >
         <TextView
+            android:id="@+id/secondT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -115,6 +117,8 @@
 
         >
         <TextView
+            android:id="@+id/device_l"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -157,6 +161,7 @@
 
         >
         <TextView
+            android:id="@+id/thirdT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

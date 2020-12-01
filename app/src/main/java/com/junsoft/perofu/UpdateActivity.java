@@ -9,6 +9,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -17,13 +18,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.Size;
+import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.karacce.buttom.Buttom;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.net.URI;
 
 import at.grabner.circleprogress.CircleProgressView;
@@ -150,6 +155,7 @@ public class UpdateActivity extends Activity {
 
             status.setText("Updating...");
             mCircleView.setValue(percent);
+
             percentView.setText(percent + "%");
             progressing = true;
          //   progressBar.setIndeterminate(false);
@@ -208,6 +214,89 @@ public class UpdateActivity extends Activity {
         firmwareName.setText(DeviceManager.getInstance().firmwareName);
 
         status.setText("Waiting");
+
+        Display display = getWindowManager().getDefaultDisplay();
+
+
+        Point size = new Point();
+        display.getSize(size);
+
+        mCircleView.setBarWidth(24);
+
+        mCircleView.setRimWidth(23);
+
+        float ratio = 1.0f;//(float)size.x / 800.0f;
+        if(size.y == 800)
+        {
+            // 480 x 800
+            mCircleView.setBarWidth((int)convertDpToPixel(21) );
+            mCircleView.setRimWidth((int)convertDpToPixel(20) );
+
+        }
+        Resources resources = this.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float dpi =(float)metrics.densityDpi /  DisplayMetrics.DENSITY_DEFAULT;
+
+
+
+        // xxhdpi : 96px
+        // xhdpi :
+        Class mipmap = R.mipmap.class;
+
+        try {
+            Field field = mipmap.getField("fback");
+            Log.d("","");
+            //int resId = field.get.getInt(imageName);
+
+        } catch (NoSuchFieldException e) {//If the imageName is not found under "mipmap", it will return 0
+
+        }
+
+        int dp = (int)(96.0f / dpi);
+
+        if(dpi == 1.5)
+        {
+         //   dpi = 0.75f;
+            /*
+            ImageView back = (ImageView)findViewById(R.id.progress_back);
+            RelativeLayout l = (RelativeLayout)findViewById(R.id.percent_l);
+
+
+            float offset = 64 + 58 + 1 + 100 + 10 + 30 + 1 + 44;
+            float height = size.y - convertDpToPixel(offset + 44 * 2);
+            mCircleView.getLayoutParams().height = (int)height;
+            back.getLayoutParams().height = (int)height;
+            l.getLayoutParams().height = (int)height;
+
+
+             */
+            TextView percent = (TextView)findViewById(R.id.percent_label);
+            percent.setTextSize(42);
+
+            updateBt.getLayoutParams().height = (int)convertDpToPixel(34);
+
+            updateBt.setTextSize((int)(10));
+
+        }
+        ImageView back = (ImageView)findViewById(R.id.progress_back);
+        RelativeLayout l = (RelativeLayout)findViewById(R.id.percent_l);
+        RelativeLayout l1 = (RelativeLayout)findViewById(R.id.progress_info);
+
+
+
+        float offset = 64 + 28 +  1 + 100 + 10 + 1 + 44 + 10 + 20 + 24 ;//64 + 58 + 1 + 100 + 10 + 30 + 1 + 44;
+        float height = size.y - convertDpToPixel(offset + 44 * 2);
+        mCircleView.getLayoutParams().height = (int)height;
+        back.getLayoutParams().height = (int)height;
+        l.getLayoutParams().height = (int)height;
+        l1.getLayoutParams().height = (int)height;
+
+        float ratio0 = height / convertDpToPixel(277);
+
+        mCircleView.setBarWidth((int)Math.ceil(24 * dpi * ratio0));
+        mCircleView.setRimWidth((int)Math.ceil(23 * dpi* ratio0));
+
+        mCircleView.setValue(65);
 
         // fileType = DfuService.TYPE_AUTO; // Default
 

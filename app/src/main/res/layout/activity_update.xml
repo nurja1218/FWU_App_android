@@ -37,8 +37,7 @@
     <RelativeLayout
         android:id="@+id/first"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="28dp"
 
         android:layout_below="@+id/top"
         android:background="#ffffff"
@@ -138,8 +137,8 @@
         android:layout_height="1dp"
         android:layout_below="@+id/info"
         android:background="#eeeeee"
-        android:layout_marginLeft ="10dp"
-        android:layout_marginRight ="10dp"
+        android:layout_marginLeft ="50dp"
+        android:layout_marginRight ="50dp"
         android:layout_marginTop ="10dp"
         >
 
@@ -157,7 +156,7 @@
             android:id="@+id/status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="50dp"
             android:text="waiting"
             android:textSize="14dp"
             android:textColor="#000000"
@@ -167,16 +166,17 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="277dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/status_label"
-        android:layout_marginTop ="10dp"
         android:gravity="center"
         >
 
         <ImageView
-             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/bar_back"
+            android:id="@+id/progress_back"
+            android:layout_width="match_parent"
+            android:layout_height="277dp"
+
+            android:src="@mipmap/fback"
 
             />
 
@@ -184,18 +184,15 @@
     <RelativeLayout
         android:id="@+id/progress_info"
         android:layout_width="match_parent"
-        android:layout_height="277dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/status_label"
-        android:layout_marginTop ="10dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         >
 
         <at.grabner.circleprogress.CircleProgressView
             android:id="@+id/circleView"
 
-            android:layout_marginLeft ="40dp"
-            android:layout_marginRight ="40dp"
-            android:layout_width="277dp"
+            android:layout_width="match_parent"
             android:layout_height="277dp"
             CircleProgressView:cpv_unit ="%"
             CircleProgressView:cpv_text = ""
@@ -212,10 +209,11 @@
             />
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/percent_l"
+
         android:layout_width="match_parent"
         android:layout_height="277dp"
         android:layout_below="@+id/status_label"
-        android:layout_marginTop ="10dp"
         android:gravity="center"
         >
 
@@ -223,7 +221,6 @@
             android:id="@+id/percent_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:text="0%"
             android:textSize="64dp"
             android:textAlignment="center"
@@ -235,9 +232,8 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="84dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
 
         >
 
@@ -246,9 +242,8 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginRight="28dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:text="       Start Update"
             android:textSize="14dp"
             android:textColor="#FFFFFF"
