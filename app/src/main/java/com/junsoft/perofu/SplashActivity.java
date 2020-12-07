@@ -43,7 +43,7 @@ public class SplashActivity extends Activity {
         display.getSize(size);
 
      //   imgView.getLayoutParams().width = (int)(0.6 *size.x) ;
-        imgView.getLayoutParams().height = (int)(0.5*size.x) ;
+        imgView.getLayoutParams().height = (int)(0.65*size.x) ;
 
 
         mTimerDisp = new Handler()

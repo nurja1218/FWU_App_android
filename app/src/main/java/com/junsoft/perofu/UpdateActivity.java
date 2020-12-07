@@ -337,7 +337,7 @@ public class UpdateActivity extends Activity {
 
 
 
-        mCircleView.setValue(65);
+     //   mCircleView.setValue(65);
 
         // fileType = DfuService.TYPE_AUTO; // Default
 
