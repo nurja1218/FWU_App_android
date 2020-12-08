@@ -238,6 +238,8 @@ public class UpdateActivity extends Activity {
         float dpi =(float)metrics.densityDpi /  DisplayMetrics.DENSITY_DEFAULT;
 
 
+   //     mCircleView.setValue(65);
+
 
         // xxhdpi : 96px
         // xhdpi :

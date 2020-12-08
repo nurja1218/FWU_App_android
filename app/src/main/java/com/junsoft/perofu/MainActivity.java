@@ -21,6 +21,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         deviceName = (TextView) findViewById(R.id.devicename);
 
-        RelativeLayout main = (RelativeLayout) findViewById(R.id.movie);
+    //    RelativeLayout main = (RelativeLayout) findViewById(R.id.movie);
 
         TextView first = (TextView)findViewById(R.id.firstT);
         TextView second = (TextView)findViewById(R.id.secondT);
@@ -100,93 +101,82 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         Display display = getWindowManager().getDefaultDisplay();
 
+        RelativeLayout firstT = (RelativeLayout)findViewById(R.id.first);
 
         RelativeLayout seconT = (RelativeLayout)findViewById(R.id.scan);
 
-        RelativeLayout firmwareT = (RelativeLayout)findViewById(R.id.select_label);
+        RelativeLayout firmwareT = (RelativeLayout)findViewById(R.id.firmware);
 
         Point size = new Point();
         display.getSize(size);
 
-       int height = (int)(size.x * (9.0f / 16.0f));
+       int mHeight = (int)(size.x * (9.0f / 16.0f));
+        int height0 = (int)((size.y - convertDpToPixel(64))/3 );
+        int height = (int)((size.y - height0 - convertDpToPixel(64))/2 );
 
-       int offset = (int)((size.y - (height + convertDpToPixel(64 + 26 + 11)) ) / 3.0f ) ;
+     //   RelativeLayout.LayoutParams param0 = (RelativeLayout.LayoutParams) firstT.getLayoutParams();
 
-      int pxOffset = (int)  convertPixelsToDp(offset);
-       // seconT.getLayoutParams().left;
+        RelativeLayout.LayoutParams param0 = (RelativeLayout.LayoutParams) firstT.getLayoutParams();
+        RelativeLayout.LayoutParams param1 = (RelativeLayout.LayoutParams) seconT.getLayoutParams();
+        RelativeLayout.LayoutParams param2 = (RelativeLayout.LayoutParams) firmwareT.getLayoutParams();
 
-        if(size.y> 800)
+        RelativeLayout.LayoutParams mparam0 = (RelativeLayout.LayoutParams) mVideoView.getLayoutParams();
+
+        mparam0.width = (int) (16 * (height0 - convertDpToPixel(20)) * height / 9.0);
+        param0.height = height0;
+        param1.height = height;
+        param2.height = height;
+
+        int offset = (int)((size.y - (height + convertDpToPixel(64 + 26 + 11)) ) / 3.0f ) ;
+
+
+        int secondDiff = (int)( height - convertDpToPixel(89 + 14));
+        int thirdDiff = (int)( height - convertDpToPixel(118 ));
+
+        // 44*2 + 10 + 20
+
+        RelativeLayout.LayoutParams sParam0 = (RelativeLayout.LayoutParams) second.getLayoutParams();
+        RelativeLayout.LayoutParams sParam1 = (RelativeLayout.LayoutParams) third.getLayoutParams();
+
+        sParam0.topMargin = secondDiff / 2;
+        sParam1.topMargin = thirdDiff / 2;
+
+
+        int orgThirdHeight = (int) convertDpToPixel(118);
+
+        float diff = height;
+
+        diff = height - orgThirdHeight;
+        float ratio = (float)(diff )/ (float)(orgThirdHeight);
+
+        ratio = ((float)(height  - convertDpToPixel(40))/ (float)((orgThirdHeight + convertDpToPixel(40))));
+
+
+        if(ratio >= 2)
         {
-            RelativeLayout.LayoutParams param0 = (RelativeLayout.LayoutParams) seconT.getLayoutParams();
-
-            param0.topMargin = pxOffset;//convertDpToPixel(width);
-            seconT.setLayoutParams(param0);
-
-            RelativeLayout.LayoutParams param1 = (RelativeLayout.LayoutParams) firmwareT.getLayoutParams();
-
-            param1.topMargin = (int)convertPixelsToDp(offset);//convertDpToPixel(width);
-
-            firmwareT.setLayoutParams(param1);
-        }
-
-
-
-        mVideoView.getLayoutParams().width =  size.x;
-
-        mVideoView.getLayoutParams().height=(int)height;
-
-        main.getLayoutParams().width =  size.x;
-        main.getLayoutParams().height =  height;
-
-        Resources resources = this.getResources();
-        DisplayMetrics metrics = resources.getDisplayMetrics();
-        float dpi =(float)metrics.densityDpi /  DisplayMetrics.DENSITY_DEFAULT;
-
-        if( size.y > 480 && size.y <= 800)
-        {
-            scanBt.getLayoutParams().height = (int)convertDpToPixel(34);
-
-            serverBt.getLayoutParams().height = (int)convertDpToPixel(34);
-            localBt.getLayoutParams().height = (int)convertDpToPixel(34);
-
-            scanBt.setTextSize((int)(10));
-            serverBt.setTextSize((int)(10));
-            localBt.setTextSize((int)(10));
-
-            first.setTextSize((int)(12));
-            second.setTextSize((int)(12));
-            third.setTextSize((int)(12));
-
-            deviceL.setTextSize((int)(11));
-            deviceName.setTextSize((int)(11));
+            ratio = 1.5f;
 
         }
-        else if( size.y <= 480)
+        if(ratio < 0.8)
         {
-            RelativeLayout top = (RelativeLayout)findViewById(R.id.top);
-            top.getLayoutParams().height = 48;
-
-            ImageView top_img = (ImageView)findViewById(R.id.top_img);
-            top_img.getLayoutParams().height = 22;
-
-            scanBt.getLayoutParams().height = (int)convertDpToPixel(30);
-
-            serverBt.getLayoutParams().height = (int)convertDpToPixel(30);
-            localBt.getLayoutParams().height = (int)convertDpToPixel(30);
-
-            scanBt.setTextSize((int)(8));
-            serverBt.setTextSize((int)(8));
-            localBt.setTextSize((int)(8));
-
-            first.setTextSize((int)(10));
-            second.setTextSize((int)(10));
-            third.setTextSize((int)(10));
-
-            deviceL.setTextSize((int)(9));
-            deviceName.setTextSize((int)(9));
+            ratio = 0.8f;
 
         }
+        scanBt.getLayoutParams().height = (int)convertDpToPixel(44 * ratio);
 
+        serverBt.getLayoutParams().height = (int)convertDpToPixel(44 * ratio);
+        localBt.getLayoutParams().height = (int)convertDpToPixel(44 * ratio);
+
+        scanBt.setTextSize(TypedValue.COMPLEX_UNIT_DIP ,15 * ratio);
+        serverBt.setTextSize(TypedValue.COMPLEX_UNIT_DIP ,15 * ratio);
+        localBt.setTextSize(TypedValue.COMPLEX_UNIT_DIP ,15 * ratio);
+
+        first.setTextSize(TypedValue.COMPLEX_UNIT_DIP ,15 * ratio);
+        second.setTextSize(TypedValue.COMPLEX_UNIT_DIP ,15 * ratio);
+        third.setTextSize(TypedValue.COMPLEX_UNIT_DIP ,15 * ratio);
+
+        deviceL.setTextSize(TypedValue.COMPLEX_UNIT_DIP ,15 * ratio);
+        deviceName.setTextSize(TypedValue.COMPLEX_UNIT_DIP ,15 * ratio);
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
