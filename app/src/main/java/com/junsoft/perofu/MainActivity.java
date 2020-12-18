@@ -35,6 +35,7 @@ import android.widget.VideoView;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 
+import com.github.javiersantos.appupdater.AppUpdater;
 import com.jaiselrahman.filepicker.activity.FilePickerActivity;
 import com.jaiselrahman.filepicker.config.Configurations;
 import com.karacce.buttom.Buttom;
@@ -96,7 +97,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         TextView deviceL = (TextView)findViewById(R.id.device_l);
 
 
-        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/demo");
+     //   Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/demo");
+        Uri uri = Uri.parse("http://www.junsoft.org/firmware/demo.mp4");
         mVideoView.setVideoURI(uri);
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -368,7 +370,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         {
             deviceName.setText(DeviceManager.getInstance().deviceName);
         }
-     
+
+        new AppUpdater(this)
+                .setTitleOnUpdateAvailable("Update")
+                .setContentOnUpdateAvailable("There is a new version. Do you want to update?")
+                .setTitleOnUpdateNotAvailable("Update not available")
+                .setContentOnUpdateNotAvailable("No update available. Check for updates again later!")
+                .setButtonUpdate("Update Now")
+                .setButtonDismiss(null)
+                .setButtonDoNotShowAgain(null)
+                // .setIcon(R.drawable.intro_logo) // Notification icon
+                .setCancelable(false)
+                .start();
+
     }
 
     void goScanList()
