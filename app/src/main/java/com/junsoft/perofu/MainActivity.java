@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     Buttom serverBt;
     Buttom localBt;
     TextView deviceName;
+    ImageView back;
+
     private BluetoothDevice selectedDevice;
 
     int FILE_REQUEST_CODE = 200;
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
          mVideoView = (VideoView) findViewById(R.id.screenVideoView);
+        back = (ImageView)findViewById(R.id.back);
 
         scanBt = (Buttom) findViewById(R.id.scanClick);
         serverBt = (Buttom) findViewById(R.id.server);
@@ -98,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
      //   Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/demo");
-        Uri uri = Uri.parse("http://www.junsoft.org/firmware/demo.mp4");
+        Uri uri = Uri.parse("https://palmcat.co.kr/sw/fumode-guide.mp4");
         mVideoView.setVideoURI(uri);
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -183,6 +186,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onPrepared(MediaPlayer mp) {
                 // 준비 완료되면 비디오 재생
+                back.setVisibility(View.GONE);
+
                 mp.start();
             }
         });
